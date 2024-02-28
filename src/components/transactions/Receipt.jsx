@@ -1,40 +1,62 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { faker } from '@faker-js/faker';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
+import CryptoJS from 'crypto-js';
 import React from 'react';
 
 const Receipt = (props) => {
-    const data = {
-        'Transaction Hash': props.transactionHash,
-        'Block Hash': props.blockHash,
-        'Block Number': props.blockNumber,
-        'From Address': props.fromAddress,
-        'To Address': props.toAddress,
-        'Amount': props.amount,
-        'Gas Used': props.gasUsed,
+
+    const calculateBlockDetails = () => {
+        // Using  @faker-js/faker and crypto-js to generate fake block details
+        const fakeBlockHash = CryptoJS.SHA256(faker.string.uuid()).toString();
+        const fakeBlockNumber = faker.number.int();
+        const fakeTransactionHash = CryptoJS.SHA256(faker.string.uuid()).toString();
+
+        return {
+            blockHash: fakeBlockHash,
+            blockNumber: fakeBlockNumber,
+            transactionHash: fakeTransactionHash,
+        };
     };
     
     // To check if required fields are missing
-    console.log(`${props.amount} ----- ${props.toAddress}--------${props.fromAddress}`)
     const areRequiredFieldsMissing = !props.toAddress || !props.fromAddress || !props.amount;
 
-    console.log(areRequiredFieldsMissing);
+    // To check if both to & from addresses are different
+    const areAddressesSame = props.toAddress === props.fromAddress;
 
+    // validations
     if (areRequiredFieldsMissing) {
-    return (
-        <Typography variant="h6" style={{ marginTop: '16px' }} sx={{backgroundColor: "red"}}>
-            Please fill in all required transfer fields.
-        </Typography>
+        // Error message if required fields are missing
+        return (
+            <Typography variant="h6" style={{ marginTop: '16px' }} sx={{backgroundColor: "red"}}>
+                Please fill in all required transfer fields.
+            </Typography>
+        );
+    } else if (areAddressesSame) {
+        // Error message if both addresses are same
+        return (
+            <Typography variant="h6" style={{ marginTop: '16px' }} sx={{backgroundColor: "red"}}>
+                Please select distinct address for the transfer.
+            </Typography>
     );
     }
+
+    // Calculate remaining block details
+    const { blockHash, blockNumber, transactionHash } = calculateBlockDetails();
+
+    const data = {
+        'Transaction Hash': transactionHash,
+        'Block Hash': blockHash,
+        'Block Number': blockNumber,
+        'From Address': props.fromAddress,
+        'To Address': props.toAddress,
+        'Amount': props.amount,
+        'Gas Used': props.gasUsed
+    };
 
     return(
     <TableContainer component={Paper} style={{ marginTop: '16px' }}>
         <Table>
-            <TableHead>
-                <TableRow>
-                    <TableCell>Attribute</TableCell>
-                    <TableCell>Value</TableCell>
-                </TableRow>
-            </TableHead>
             <TableBody>
                 {Object.entries(data).map(([key, value]) => (
                     <TableRow key={key}>

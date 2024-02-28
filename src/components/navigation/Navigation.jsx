@@ -1,15 +1,14 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import React from "react";
 import { Link } from 'react-router-dom';
+import Header from "../header/Header";
 import './Navigation.css';
 
 const Navigation = () => {
     return (
         <AppBar position="static">
             <Toolbar className="nav-bar">
-                <Typography variant="h3" component="div" className="nav-bar-items">
-                    ChainView
-                </Typography>
+                <Header title="ChainView"/>
                 <div className="nav-bar-links">
                     <Link to="/" className="nav-bar-item">
                         Transactions

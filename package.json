@@ -15,11 +15,13 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/joy": "^5.0.0-beta.29",
     "@mui/material": "^5.15.10",
+    "crypto-js": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",

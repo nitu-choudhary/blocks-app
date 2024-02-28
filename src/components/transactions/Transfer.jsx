@@ -8,8 +8,6 @@ import { ethereumAddresses } from '../mockData';
 import Receipt from './Receipt';
 
 const Transfer = () => {
-
-    // state management
     const [amount, setAmount] = useState(0);
     const [receipt, setReceipt] = useState({});
     const [showReceipt, setShowReceipt] = useState(false);
@@ -18,35 +16,29 @@ const Transfer = () => {
     const [selectedFromAddress, setSelectedFromAddress] = useState('');
 
     const handleSelection = (event, inputType) => {
+        event.preventDefault();
         const { value } = event.target;
-        // Capture the selected address
+
+        // capture and set the selected address
         if (inputType === "toAddress") {
-            // Set the address
             setSelectedToAddress(value);
         } else if (inputType === "fromAddress") {
-            // Set the address
             setSelectedFromAddress(value);
         } else if (inputType === "amount") {
-            event.preventDefault();
             setAmount(value);
         }
-        // setSelectedBlock(ethereumBlocks.find((block) => block.address === addressValue));
     };
 
     // handle submit
     const handleSubmit = (event) => {
         event.preventDefault();
-        event.preventDefault();
 
-        // set the receipt state
+        // set the receipt
         const submittedReceipt = {
-            transactionHash: 'yourTransactionHash',  // Replace with actual data
-            blockHash: 'yourBlockHash',
-            blockNumber: 'yourBlockNumber',
-            fromAddress: selectedFromAddress,  // Assuming selectedFromAddress is set
-            toAddress: selectedToAddress,  // Assuming selectedToAddress is set
-            amount: amount,  // Assuming amount is set
-            gasUsed: 1000 * Math.floor(Math.random() * 5) + 1,
+            fromAddress: selectedFromAddress,
+            toAddress: selectedToAddress,
+            amount: amount,
+            gasUsed: 1000 * Math.floor(Math.random() * 10) + 1
         };
 
         setReceipt(submittedReceipt);
@@ -55,7 +47,12 @@ const Transfer = () => {
 
     // handle cancel
     const handleCancel = () => {
-        event.preventDefault();
+        // clear fields
+        setAmount(0);
+        setSelectedToAddress('');
+        setSelectedFromAddress('');
+        
+        // hide receipt
         setShowReceipt(false);
     }
 
@@ -106,6 +103,7 @@ const Transfer = () => {
                 value={amount}
                 sx={{color: "white"}}
                 onChange={(event) => handleSelection(event, "amount")}
+                type="number"
                 className="left-aligned-select"
                 />
             </FormControl>
@@ -115,13 +113,10 @@ const Transfer = () => {
             </ButtonGroup>
             { showReceipt && (
             <Receipt
-            transactionHash ={receipt.transactionHash}
-            blockHash= {receipt.blockHash}
-            blockNumber= {receipt.blockNumber}
-            fromAddress= {receipt.fromAddress}
-            toAddress= {receipt.toAddress}
-            amount= {receipt.amount}
-            gasUsed= {receipt.gasUsed}
+                fromAddress= {receipt.fromAddress}
+                toAddress= {receipt.toAddress}
+                amount= {receipt.amount}
+                gasUsed= {receipt.gasUsed}
             />
             )
             }

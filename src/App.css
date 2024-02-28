@@ -8,15 +8,6 @@
   text-align: left;
 }
 
-h1 {
-  background: linear-gradient(#444bd4, #ce520b);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-family: 'RobotoRegular', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
 label {
   font-size: 1.3em;
   text-align: left;
