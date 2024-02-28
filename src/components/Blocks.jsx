@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import BlockDetails from './BlockDetails';
 import { ethereumAddresses, ethereumBlocks } from './mockData';
 
+// update it using mui
+
 function Blocks() {
     const [selectedAddress, setSelectedAddress] = useState('');
     const [selectedBlock, setSelectedBlock] = useState({});
@@ -13,12 +15,10 @@ function Blocks() {
         // Set the address and block details
         setSelectedAddress(addressValue);
         setSelectedBlock(ethereumBlocks.find((block) => block.address === addressValue));
-        // check why this is required?? ----------
     };
 
     return(
         <div>
-            <h1>Blocks</h1>
             <div>
                 <label htmlFor='dropdown'>Select the address:</label>
                 <select id='dropdown' value={selectedAddress} onChange={handleSelection}>

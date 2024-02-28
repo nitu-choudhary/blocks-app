@@ -4,6 +4,10 @@
   text-align: center;
 }
 
+.left-aligned-select {
+  text-align: left;
+}
+
 h1 {
   background: linear-gradient(#444bd4, #ce520b);
   background-clip: text;
@@ -25,9 +29,10 @@ select, option {
   font-size: 1.1em;
 }
 
-h2 {
+header h2 {
   text-align: left;
   color: #D4CD44;
+  font-size: 1.5em;
 }
 
 h3 {

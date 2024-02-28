@@ -1,13 +1,13 @@
-import PermDeviceInformationIcon from '@mui/icons-material/PermDeviceInformation';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import React from 'react';
+import Header from './header/Header';
 
 function BlockDetails(props) {
     const { address, balance, gasUsed } = props;
 
     return (
         <div>
-            <h2><PermDeviceInformationIcon />Block Details</h2>
+            <Header title="Block Details" />
             <div>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
