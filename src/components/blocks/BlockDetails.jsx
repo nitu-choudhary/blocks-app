@@ -1,6 +1,6 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import React from 'react';
-import Header from './header/Header';
+import Header from '../header/Header';
 
 function BlockDetails(props) {
     const { address, balance, gasUsed } = props;

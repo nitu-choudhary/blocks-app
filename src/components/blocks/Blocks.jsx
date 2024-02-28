@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { ethereumAddresses, ethereumBlocks } from '../mockData';
 import BlockDetails from './BlockDetails';
-import { ethereumAddresses, ethereumBlocks } from './mockData';
 
 // update it using mui
 

@@ -3,9 +3,9 @@ import ButtonGroup from '@mui/joy/ButtonGroup';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import React, { useState } from 'react';
+import Header from '../header/Header';
+import { ethereumAddresses } from '../mockData';
 import Receipt from './Receipt';
-import Header from './header/Header';
-import { ethereumAddresses } from './mockData';
 
 const Transfer = () => {
 

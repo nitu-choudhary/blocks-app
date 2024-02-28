@@ -1,9 +1,9 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import './App.css'
-import Blocks from './components/Blocks'
-import Transfer from './components/Transfer'
-import Transaction from './components/details/Transaction'
-import Navigation from './components/navigation/d/Navigation'
+import Blocks from './components/blocks/Blocks'
+import Navigation from './components/navigation/Navigation'
+import Transaction from './components/transactions/Transaction'
+import Transfer from './components/transactions/Transfer'
 
 function App() {
 
@@ -17,10 +17,6 @@ function App() {
             <Route path="/blocks" element={<Blocks />} />
           </Routes>
         </Router>
-        {/* <Header title="ChainView"/> */}
-        {/* <Blocks />
-        <Transaction />
-        <Transfer /> */}
       </>
   )
 }
