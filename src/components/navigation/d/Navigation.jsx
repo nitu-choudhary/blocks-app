@@ -11,7 +11,7 @@ const Navigation = () => {
                     ChainView
                 </Typography>
                 <div className="nav-bar-links">
-                    <Link to="/transactions" className="nav-bar-item">
+                    <Link to="/" className="nav-bar-item">
                         Transactions
                     </Link>
                     <Link to="/transfer" className="nav-bar-item">

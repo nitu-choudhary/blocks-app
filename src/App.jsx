@@ -12,7 +12,7 @@ function App() {
         <Router>
           <Navigation />
           <Routes>
-            <Route path="/transactions" element={<Transaction />} />
+            <Route path="/" element={<Transaction />} />
             <Route path="/transfer" element={<Transfer />} />
             <Route path="/blocks" element={<Blocks />} />
           </Routes>
