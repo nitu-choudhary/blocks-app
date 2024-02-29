@@ -31,20 +31,22 @@ const Transaction = () => {
                         {mockTransactions.map((transaction, index) => (
                             <Fragment key={index}>
                                 <TableRow>
-                                    <IconButton
-                                        aria-label="expand row"
-                                        size="small"
-                                        onClick={() => handleExpand(index)}
-                                    >
-                                        {expandedTransaction === index ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                                    </IconButton>
+                                    <TableCell>
+                                        <IconButton
+                                            aria-label="expand row"
+                                            size="small"
+                                            onClick={() => handleExpand(index)}
+                                        >
+                                            {expandedTransaction === index ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                                        </IconButton>
+                                    </TableCell>
                                     <TableCell>{transaction.source}</TableCell>
                                     <TableCell>{transaction.destination}</TableCell>
                                     <TableCell>{transaction.amount}</TableCell>
                                     <TableCell>{transaction.status}</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell colSpan={5}>
+                                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
                                         <Collapse in={expandedTransaction === index} timeout="auto" unmountOnExit>
                                             <Receipt
                                                 fromAddress={transaction.source}
@@ -69,5 +71,3 @@ const Transaction = () => {
 }
 
 export default Transaction
-
-// sx={{'&:last-child td, &:last-child th': { border: 0 }}
