@@ -66,7 +66,7 @@ const Receipt = (props) => {
             <TableBody>
                 {Object.entries(data).map(([key, value]) => (
                     <TableRow key={key}>
-                        <TableCell>{key}</TableCell>
+                        <TableCell style={{backgroundColor: '#e0ac78'}}>{key}</TableCell>
                         <TableCell>{value}</TableCell>
                     </TableRow>
                 ))}
@@ -75,7 +75,7 @@ const Receipt = (props) => {
             <TableBody>
                 {Object.entries(transactionHistoryReceiptData).map(([key, value]) => (
                     <TableRow key={key}>
-                        <TableCell>{key}</TableCell>
+                        <TableCell style={{backgroundColor: '#e0ac78'}}>{key}</TableCell>
                         <TableCell>{value}</TableCell>
                     </TableRow>
                 ))}

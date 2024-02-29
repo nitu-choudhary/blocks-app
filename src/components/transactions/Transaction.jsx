@@ -20,11 +20,11 @@ const Transaction = () => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell />
-                            <TableCell>Source</TableCell>
-                            <TableCell>Destination</TableCell>
-                            <TableCell>Amount</TableCell>
-                            <TableCell>Status</TableCell>
+                            <TableCell style={{backgroundColor: '#e6892d', fontSize: '1.2em'}}/>
+                            <TableCell style={{backgroundColor: '#e6892d', fontSize: '1.2em'}}>Source</TableCell>
+                            <TableCell style={{backgroundColor: '#e6892d', fontSize: '1.2em'}}>Destination</TableCell>
+                            <TableCell style={{backgroundColor: '#e6892d', fontSize: '1.2em'}}>Amount</TableCell>
+                            <TableCell style={{backgroundColor: '#e6892d', fontSize: '1.2em'}}>Status</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

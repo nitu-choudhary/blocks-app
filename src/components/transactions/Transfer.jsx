@@ -58,7 +58,7 @@ const Transfer = () => {
 
     return (
         <div>
-            <Header title="Transfers"/>
+            <Header title="Transfers" />
             <FormControl fullWidth sx={{ m: 1 }}>
                 <InputLabel id="to-address-select-label" sx={{color: "white"}}>To Address</InputLabel>
                 <Select
@@ -67,7 +67,13 @@ const Transfer = () => {
                 value={selectedToAddress}
                 label="toAddress"
                 onChange={(event) => handleSelection(event, "toAddress")}
-                sx={{color: "white"}}
+                sx={{
+                    color: "white",
+                    '&.MuiOutlinedInput-root': {
+                        '& fieldset': {
+                            borderColor: 'white',
+                    }}
+                }}
                 className="left-aligned-select"
                 >
                     {
@@ -85,7 +91,13 @@ const Transfer = () => {
                 value={selectedFromAddress}
                 label="fromAddress"
                 onChange={(event) => handleSelection(event, "fromAddress")}
-                sx={{color: "white"}}
+                sx={{
+                    color: "white",
+                    '&.MuiOutlinedInput-root': {
+                        '& fieldset': {
+                            borderColor: 'white', // Set the border color to white
+                    }}
+                }}
                 className="left-aligned-select"
                 >
                     {

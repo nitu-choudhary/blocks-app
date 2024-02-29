@@ -1,8 +1,8 @@
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React, { useState } from 'react';
+import Header from '../header/Header';
 import { ethereumAddresses, ethereumBlocks } from '../mockData';
 import BlockDetails from './BlockDetails';
-
-// update it using mui
 
 function Blocks() {
     const [selectedAddress, setSelectedAddress] = useState('');
@@ -19,24 +19,39 @@ function Blocks() {
 
     return(
         <div>
-            <div>
-                <label htmlFor='dropdown'>Select the address:</label>
-                <select id='dropdown' value={selectedAddress} onChange={handleSelection}>
-                <option>---Select---</option>
-                {ethereumAddresses.map((address) => (
-                    <option key={address}>
-                        {address}
-                    </option>
-                ))}
-                </select>
-
-                {/* handle empty inputs */}
-                {selectedAddress === '' || selectedAddress === '---Select---'? (
-                    <h2>Ethereum address is required.</h2>
-                ) : (
-                    <BlockDetails {...selectedBlock} />
+            <Header title="Blocks" />
+            <FormControl fullWidth sx={{m: 1}}>
+                <InputLabel id="address-select-label" sx={{color: "white"}}>Ethereum Block</InputLabel>
+                <Select
+                labelId="address-select-label"
+                id="outlined-adornment-address"
+                value={selectedAddress}
+                label="ethereumBlock"
+                onChange={handleSelection}
+                sx={{
+                    color: "white",
+                    '&.MuiOutlinedInput-root': {
+                        '& fieldset': {
+                            borderColor: 'white'
+                        }}
+                    }}
+                className="left-aligned-select"
+                >
+                    {
+                        ethereumAddresses.map((address, index) => {
+                            return (<MenuItem key={index} value={address}>{address}</MenuItem>);
+                        })
+                    }
+                </Select>
+                {!selectedAddress && (
+                    <span style={{ color: 'red', fontSize: '18px', margin: '5px 5px', textAlign: 'left'}}>
+                        Please select Ethereum Address from the dropdown
+                    </span>
                 )}
-            </div>
+            </FormControl>
+            {selectedAddress && (
+                <BlockDetails {...selectedBlock} />
+            )}
         </div>
     );
 }

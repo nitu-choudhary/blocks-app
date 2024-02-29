@@ -13,15 +13,15 @@ function BlockDetails(props) {
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableBody>
                             <TableRow>
-                                <TableCell align="left" sx={{ backgroundColor: '#D4CD44' }}>Address</TableCell>
+                                <TableCell align="left" sx={{ backgroundColor: '#e0ac78', fontSize: '1.2em'}}>Address</TableCell>
                                 <TableCell>{address}</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell align="left" sx={{ backgroundColor: '#D4CD44' }}>Balance</TableCell>
+                                <TableCell align="left" sx={{ backgroundColor: '#e0ac78', fontSize: '1.2em' }}>Balance</TableCell>
                                 <TableCell>{balance}</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell align="left" sx={{ backgroundColor: '#D4CD44' }}>Gas Used</TableCell>
+                                <TableCell align="left" sx={{ backgroundColor: '#e0ac78', fontSize: '1.2em' }}>Gas Used</TableCell>
                                 <TableCell>{gasUsed}</TableCell>
                             </TableRow>
                         </TableBody>
