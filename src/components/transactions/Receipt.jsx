@@ -2,7 +2,6 @@ import { faker } from '@faker-js/faker';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
 import CryptoJS from 'crypto-js';
 import React from 'react';
-
 const Receipt = (props) => {
 
     const calculateBlockDetails = () => {
@@ -54,9 +53,16 @@ const Receipt = (props) => {
         'Gas Used': props.gasUsed
     };
 
+    const transactionHistoryReceiptData = {
+        'Receipt Hash': props.receiptHash,
+        'Gas Used': props.gasUsed,
+        'Created': props.created,
+        'Updated': props.updated
+    }
     return(
     <TableContainer component={Paper} style={{ marginTop: '16px' }}>
         <Table>
+            {props.label !== "Transaction History" ?
             <TableBody>
                 {Object.entries(data).map(([key, value]) => (
                     <TableRow key={key}>
@@ -65,6 +71,16 @@ const Receipt = (props) => {
                     </TableRow>
                 ))}
             </TableBody>
+            :
+            <TableBody>
+                {Object.entries(transactionHistoryReceiptData).map(([key, value]) => (
+                    <TableRow key={key}>
+                        <TableCell>{key}</TableCell>
+                        <TableCell>{value}</TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+            }
         </Table>
     </TableContainer>
     );
