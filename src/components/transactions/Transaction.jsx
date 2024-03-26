@@ -2,6 +2,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Collapse, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { Fragment, useState, useEffect } from 'react';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import Header from '../header/Header';
 import Receipt from './Receipt';
 
@@ -33,7 +34,7 @@ const Transaction = () => {
 
     return (
         <div>
-            <Header title="Transaction History" />
+            <Header title="Transaction History" icon={<ListAltIcon />} />
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>

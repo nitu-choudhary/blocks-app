@@ -1,7 +1,8 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../header/Header';
 import BlockDetails from './BlockDetails';
+import GridViewIcon from '@mui/icons-material/GridView';
 
 function Blocks() {
     const [selectedAddress, setSelectedAddress] = useState('');
@@ -49,7 +50,7 @@ function Blocks() {
 
     return(
         <div>
-            <Header title="Blocks" />
+            <Header title="Blocks" icon={<GridViewIcon />}/>
             <FormControl fullWidth sx={{m: 1}}>
                 <InputLabel id="address-select-label" sx={{color: "white"}}>Ethereum Block</InputLabel>
                 <Select

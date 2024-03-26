@@ -5,6 +5,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import { useState, useEffect } from 'react';
 import Header from '../header/Header';
 import Receipt from './Receipt';
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
 
 const Transfer = () => {
     const [amount, setAmount] = useState(0);
@@ -100,7 +101,7 @@ const Transfer = () => {
 
     return (
         <div>
-            <Header title="Transfers" />
+            <Header title="Transfers" icon={<SwapHorizIcon />} />
             <FormControl fullWidth sx={{ m: 1 }}>
                 <InputLabel id="to-address-select-label" sx={{color: "white"}}>To Address</InputLabel>
                 <Select

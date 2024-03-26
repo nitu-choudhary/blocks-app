@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
-import React from 'react';
+import InfoIcon from '@mui/icons-material/Info';
 import Header from '../header/Header';
 
 function BlockDetails(props) {
@@ -7,7 +8,7 @@ function BlockDetails(props) {
 
     return (
         <div>
-            <Header title="Block Details" />
+            <Header title="Block Details" icon={<InfoIcon />} />
             <div>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
