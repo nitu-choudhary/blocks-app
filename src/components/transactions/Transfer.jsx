@@ -7,7 +7,7 @@ import Header from '../header/Header';
 import Receipt from './Receipt';
 
 const Transfer = () => {
-    const [amount, setAmount] = useState();
+    const [amount, setAmount] = useState(0);
     const [receipt, setReceipt] = useState({});
     const [showReceipt, setShowReceipt] = useState(false);
 

@@ -11,6 +11,9 @@ const Navigation = () => {
                 <Header title="ChainView"/>
                 <div className="nav-bar-links">
                     <Link to="/" className="nav-bar-item">
+                        Home
+                    </Link>
+                    <Link to="/transactions" className="nav-bar-item">
                         Transactions
                     </Link>
                     <Link to="/transfer" className="nav-bar-item">

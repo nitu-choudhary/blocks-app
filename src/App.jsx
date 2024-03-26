@@ -4,6 +4,7 @@ import Blocks from './components/blocks/Blocks'
 import Navigation from './components/navigation/Navigation'
 import Transaction from './components/transactions/Transaction'
 import Transfer from './components/transactions/Transfer'
+import Homepage from './components/Homepage'
 
 function App() {
 
@@ -12,7 +13,8 @@ function App() {
         <Router>
           <Navigation />
           <Routes>
-            <Route path="/" element={<Transaction />} />
+            <Route path="/" element={<Homepage />} />
+            <Route path="/transactions" element={<Transaction />} />
             <Route path="/transfer" element={<Transfer />} />
             <Route path="/blocks" element={<Blocks />} />
           </Routes>
