@@ -4,7 +4,7 @@ import Blocks from './components/blocks/Blocks'
 import Navigation from './components/navigation/Navigation'
 import Transaction from './components/transactions/Transaction'
 import Transfer from './components/transactions/Transfer'
-import Homepage from './components/Homepage'
+import Homepage from './components/hompage/Homepage'
 
 function App() {
 
