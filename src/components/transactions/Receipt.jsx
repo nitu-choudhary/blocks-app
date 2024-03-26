@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
-import React from 'react';
 const Receipt = (props) => {
     // To check if required fields are missing
     const areRequiredFieldsMissing = !props.toAddress || !props.fromAddress || !props.amount;

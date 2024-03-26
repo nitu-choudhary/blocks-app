@@ -1,35 +1,47 @@
-import React from "react";
+/* eslint-disable no-empty-pattern */
 import { styled } from "@mui/system";
 import { Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-// Define your styled components here
-const StyledDiv = styled('div')(({ theme }) => ({
-    // styles for your root div
+// Styled components for Homepage
+const StyledDiv = styled('div')(({}) => ({
+    // styles for div
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
+
+    // partial grid background
+    backgroundImage: 'linear-gradient(0deg, transparent 24%, rgba(0,0,0,0.05) 25%, rgba(0,0,0,0.05) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0,0,0,0.05) 25%, rgba(0,0,0,0.05) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.05) 75%, rgba(0,0,0,0.05) 76%, transparent 77%, transparent)',
+    backgroundSize: '50px 50px',
 }));
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
-    // styles for your h1 Typography
+const StyledTypography = styled(Typography)(({}) => ({
+    // styles for h1 Typography
     marginBottom: '20px',
 }));
 
-const StyledButton = styled(Button)(({ theme }) => ({
-    // styles for your Button
+const StyledButton = styled(Button)(({}) => ({
+    // styles for Button
     marginTop: '20px',
 }));
 
 // Homepage component with styled components
 const Homepage = () => {
+    const navigate = useNavigate();
+
+    const handleOnClick = () => {
+        navigate('/transactions');
+    };
+
     return (
       <StyledDiv>
         <StyledTypography variant="h1">
           Welcome to Chain View
         </StyledTypography>
-        <StyledButton variant="contained" color="primary" onClick={() => Navigate('/transactions')}>
+        <h2>See the Chain, Seize the Future</h2>
+        <StyledButton variant="contained" color="primary" onClick={handleOnClick}>
           Get Started
         </StyledButton>
       </StyledDiv>

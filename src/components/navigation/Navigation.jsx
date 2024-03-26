@@ -1,5 +1,4 @@
 import { AppBar, Toolbar } from "@mui/material";
-import React from "react";
 import { Link } from 'react-router-dom';
 import Header from "../header/Header";
 import './Navigation.css';

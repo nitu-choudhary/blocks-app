@@ -2,7 +2,7 @@ import Button from '@mui/joy/Button';
 import ButtonGroup from '@mui/joy/ButtonGroup';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../header/Header';
 import Receipt from './Receipt';
 

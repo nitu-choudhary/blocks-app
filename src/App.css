@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -20,9 +23,16 @@ select, option {
   font-size: 1.1em;
 }
 
-header h2 {
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+}
+
+h2 {
+  font-family: 'Lato', sans-serif;
   text-align: left;
-  color: #D4CD44;
+  /* color: #CCFF00; */
+  color: #9966CC;
   font-size: 1.5em;
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
 import { useNavigate } from 'react-router-dom';
 
 // TODO: Add icon
@@ -19,4 +19,4 @@ function Header(props) {
     );
 }
 
-export default Header;
+export default Header
