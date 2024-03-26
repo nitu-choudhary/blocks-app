@@ -2,18 +2,36 @@ import Button from '@mui/joy/Button';
 import ButtonGroup from '@mui/joy/ButtonGroup';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../header/Header';
-import { ethereumAddresses } from '../mockData';
 import Receipt from './Receipt';
 
 const Transfer = () => {
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState();
     const [receipt, setReceipt] = useState({});
     const [showReceipt, setShowReceipt] = useState(false);
 
+    const [addresses, setAddresses] = useState([]);
     const [selectedToAddress, setSelectedToAddress] = useState('');
     const [selectedFromAddress, setSelectedFromAddress] = useState('');
+
+    // fetch address from backend
+    useEffect(() => {
+        fetchAddresses();
+    }, []);
+
+    const fetchAddresses = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/blocks/addresses');
+            if (!response.ok) {
+                throw new Error('Failed to fetch addresses');
+            }
+            const addresses = await response.json();
+            setAddresses(addresses);
+        } catch (error) {
+            console.error('Error fetching addresses:', error);
+        }
+    };
 
     const handleSelection = (event, inputType) => {
         event.preventDefault();
@@ -25,7 +43,7 @@ const Transfer = () => {
         } else if (inputType === "fromAddress") {
             setSelectedFromAddress(value);
         } else if (inputType === "amount") {
-            setAmount(value);
+            setAmount(Number(value));
         }
     };
 
@@ -33,22 +51,46 @@ const Transfer = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // set the receipt
-        const submittedReceipt = {
-            fromAddress: selectedFromAddress,
-            toAddress: selectedToAddress,
-            amount: amount,
-            gasUsed: 1000 * Math.floor(Math.random() * 10) + 1
-        };
+        // make a post request to send transaction to the backend server and get the receipt back
+        fetch('http://localhost:3000/transactions/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "source": selectedFromAddress,
+                "destination": selectedToAddress,
+                "amount": amount
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // set the receipt
+           const { gasUsed, transactionHash, blockHash, blockNumber } = data.createTransactionDto;
+            const submittedReceipt = {
+                fromAddress: selectedFromAddress,
+                toAddress: selectedToAddress,
+                amount: amount,
+                gasUsed: gasUsed,
+                transactionHash: transactionHash,
+                blockHash: blockHash,
+                blockNumber: blockNumber
+            };
 
-        setReceipt(submittedReceipt);
+            setReceipt(submittedReceipt);
+            setShowReceipt(true);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
         setShowReceipt(true);
     }
 
     // handle cancel
     const handleCancel = () => {
         // clear fields
-        setAmount(0);
+        setAmount('');
         setSelectedToAddress('');
         setSelectedFromAddress('');
         
@@ -77,7 +119,7 @@ const Transfer = () => {
                 className="left-aligned-select"
                 >
                     {
-                        ethereumAddresses.map((address, index) => {
+                        addresses.map((address, index) => {
                             return (<MenuItem key={index+"to"} value={address}>{address}</MenuItem>);
                         })
                     }
@@ -101,7 +143,7 @@ const Transfer = () => {
                 className="left-aligned-select"
                 >
                     {
-                        ethereumAddresses.map((address, index) => {
+                        addresses.map((address, index) => {
                             return (<MenuItem key={index+"from"} value={address}>{address}</MenuItem>);
                         })
                     }
@@ -129,6 +171,9 @@ const Transfer = () => {
                 toAddress= {receipt.toAddress}
                 amount= {receipt.amount}
                 gasUsed= {receipt.gasUsed}
+                blockHash= {receipt.blockHash}
+                blockNumber= {receipt.blockNumber}
+                transactionHash= {receipt.transactionHash}
             />
             )
             }

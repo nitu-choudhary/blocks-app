@@ -1,22 +1,6 @@
-import { faker } from '@faker-js/faker';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow, Typography } from '@mui/material';
-import CryptoJS from 'crypto-js';
 import React from 'react';
 const Receipt = (props) => {
-
-    const calculateBlockDetails = () => {
-        // Using  @faker-js/faker and crypto-js to generate fake block details
-        const fakeBlockHash = CryptoJS.SHA256(faker.string.uuid()).toString();
-        const fakeBlockNumber = faker.number.int();
-        const fakeTransactionHash = CryptoJS.SHA256(faker.string.uuid()).toString();
-
-        return {
-            blockHash: fakeBlockHash,
-            blockNumber: fakeBlockNumber,
-            transactionHash: fakeTransactionHash,
-        };
-    };
-    
     // To check if required fields are missing
     const areRequiredFieldsMissing = !props.toAddress || !props.fromAddress || !props.amount;
 
@@ -40,13 +24,10 @@ const Receipt = (props) => {
     );
     }
 
-    // Calculate remaining block details
-    const { blockHash, blockNumber, transactionHash } = calculateBlockDetails();
-
     const data = {
-        'Transaction Hash': transactionHash,
-        'Block Hash': blockHash,
-        'Block Number': blockNumber,
+        'Transaction Hash': props.transactionHash,
+        'Block Hash': props.blockHash,
+        'Block Number': props.blockNumber,
         'From Address': props.fromAddress,
         'To Address': props.toAddress,
         'Amount': props.amount,
@@ -59,6 +40,7 @@ const Receipt = (props) => {
         'Created': props.created,
         'Updated': props.updated
     }
+    
     return(
     <TableContainer component={Paper} style={{ marginTop: '16px' }}>
         <Table>
