@@ -1,17 +1,35 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Collapse, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Header from '../header/Header';
-import { mockTransactions } from '../mockData';
 import Receipt from './Receipt';
 
 const Transaction = () => {
+    const [transactions, setTransactions] = useState([]);
     const [expandedTransaction, setExpandedTransaction] = useState(null);
+
+    const fetchTransactions = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/transactions/history');
+            if (!response.ok) {
+                throw new Error('Failed to fetch transactions');
+            }
+            const transactions = await response.json();
+            console.log('Transactions:', transactions);
+            setTransactions(transactions);
+        } catch (error) {
+            console.error('Error fetching transactions:', error);
+        }
+    };
 
     const handleExpand = (index) => {
         setExpandedTransaction(expandedTransaction === index ? null : index);
     };
+
+    useEffect(() => {
+        fetchTransactions();
+    }, []);
 
     return (
         <div>
@@ -28,7 +46,7 @@ const Transaction = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {mockTransactions.map((transaction, index) => (
+                        {transactions.map((transaction, index) => (
                             <Fragment key={index}>
                                 <TableRow>
                                     <TableCell>
@@ -54,8 +72,8 @@ const Transaction = () => {
                                                 amount={transaction.amount}
                                                 gasUsed={transaction.gasUsed}
                                                 receiptHash={transaction.receiptHash}
-                                                created={transaction.created}
-                                                updated={transaction.updated}
+                                                created={transaction.createdAt}
+                                                updated={transaction.updatedAt}
                                                 label="Transaction History"
                                             />
                                         </Collapse>
