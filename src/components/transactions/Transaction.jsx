@@ -1,8 +1,8 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Collapse, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { Fragment, useState, useEffect } from 'react';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import { Collapse, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Fragment, useEffect, useState } from 'react';
 import Header from '../header/Header';
 import Receipt from './Receipt';
 

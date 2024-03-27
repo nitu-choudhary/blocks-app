@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from 'react-router-dom';
 import PropTypes from "prop-types";
+import { useNavigate } from 'react-router-dom';
 
-// TODO: Add icon
 function Header({ title, icon}) {
     const navigate = useNavigate();
 
@@ -15,7 +14,7 @@ function Header({ title, icon}) {
         <div style={{ display: 'flex', alignItems: 'center'}}>
             { icon && <div style={{ marginRight: '8px', fontSize: 40}}>{icon}</div> }
             {
-            title === 'ChainView' ? 
+            title === 'ChainView' ?
             <h1 style={{ cursor: 'pointer' }} onClick={handleTitleClick}>{title}</h1>
             : <h2 style={{ margin: 0 }}>{title}</h2>
             }
